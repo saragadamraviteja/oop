@@ -23,12 +23,12 @@ public final class StringTimes {
     public static String stringTimes(final String str, final int n) {
         //  Your code goes here....
         //
-        String sum = "";
+        String sums = "";
         for (int i = 0; i < n; i++) {
-            sum += str;
+            sums += str;
 
         }
-        return sum;
+        return sums;
     }
 }
 
