@@ -1,32 +1,38 @@
-/**
+/**.
  * Given an array of elements, return the String that has two values separated
  * by commans. The first value is the sum of all the elements except minimum
  * and the second value is the sum of all the elements except the maximum.
- * 
+ *
  * Input : {1,2,3,4,5};
  * Output : 14,10
- * 
+ *
  * Input : {1,2}
  * Output : 2,1
- * 
+ *
  * @author Siva Sankar
  */
 
-public class MiniMaxSum {
+public final class MiniMaxSum {
+    private MiniMaxSum() {
+    }
 
-    /**
+    /**.
      * This method returns the minimum element in the array.
-     * @param arr, contains the elements in arr.
+     * @param arr contains the elements in arr.
      * @return the minimum element in the arr. If there are no elements, then
      * it should return -1.
      */
     public static int min(int[] arr) {
         //  Your code goes here...
-        
-        return -1;
+        arra[] int = new int[]
+        if (arr.length > 0){
+            for (i = 0; i < arr.length; i++) {
+            
+            }
+        } else return -1;
     }
 
-    /**
+    /**.
      * This method returns the maximum element in the array.
      * @param arr, contains the elements in arr.
      * @return the maximum element in the arr. If there are no elements, then
