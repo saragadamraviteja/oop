@@ -1,4 +1,4 @@
-/**
+/**.
  * Given a string and an integer value n, repeat the string and concatenate
  * to the resultant string n times.
  *
@@ -10,19 +10,21 @@
  * @author Siva Sankar
  */
 
-public class StringTimes {
-    /**
-     * This method returns the String that is appending the String n 
+public final class StringTimes {
+    private StringTimes() {
+    }
+    /**.
+     * This method returns the String that is appending the String n
      * times
      * @param  str the given String
      * @param  n   the integer
      * @return the String that is appended n times to the resultant Stirng
      */
-    public static String stringTimes(String str, int n) {
+    public static String stringTimes(final String str, final int n) {
         //  Your code goes here....
-        // 
+        //
         String sum = "";
-        for(int i = 0; i < n; i++) {
+        for (int i = 0; i < n; i++) {
             sum += str;
 
         }
