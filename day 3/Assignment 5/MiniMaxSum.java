@@ -22,51 +22,78 @@ public final class MiniMaxSum {
      * @return the minimum element in the arr. If there are no elements, then
      * it should return -1.
      */
-    public static int min(int[] arr) {
+    public static int min(final int[] arr) {
         //  Your code goes here...
-        arra[] int = new int[]
-        if (arr.length > 0){
-            for (i = 0; i < arr.length; i++) {
-            
+        int mini = arr[0];
+        if (arr.length > 0) {
+            for (int i = 0; i < arr.length; i++) {
+                if (arr[i] < mini) {
+                    mini = arr[i];
+                }
             }
-        } else return -1;
+            return mini;
+        } else {
+            return -1;
+        }
     }
 
     /**.
      * This method returns the maximum element in the array.
-     * @param arr, contains the elements in arr.
+     * @param arr contains the elements in arr.
      * @return the maximum element in the arr. If there are no elements, then
      * it should return -1.
      */
-    public static int max(int[] arr) {
+    public static int max(final int[] arr) {
         //  Your code goes here...
-        
-        return -1;
+        int maxi = arr[0];
+        if (arr.length > 0) {
+            for (int i = 0; i < arr.length; i++) {
+                if (arr[i] > maxi) {
+                    maxi = arr[i];
+                }
+            }
+            return maxi;
+        } else {
+            return -1;
+        }
     }
 
-    /**
+    /**.
      * This method returns the sum of all the elements in the array.
-     * @param arr, contains the elements in arr.
+     * @param arr contains the elements in arr.
      * @return the sum of all the elements in the arr. returns -1 if there are
      * no elements.
      */
-    public static int sum(int[] arr) {
+    public static int sum(final int[] arr) {
         //  Your code goes here...
-        
+        int sums = 0;
+        if (arr.length > 0) {
+            for (int i = 0; i < arr.length; i++) {
+                sums += arr[i];
+            }
+            return sums;
+        } else {
         return -1;
+        }
     }
-    
-    /**
-     * Make use of the functions defined for finding the 
-     * minimum element, maximum element and the sum of all the elements of teh 
+    /**.
+     * Make use of the functions defined for finding the
+     * minimum element, maximum element and the sum of all the elements of teh
      * array arr.
-     * 
-     * @param arr, the input array.
+     *
+     * @param arr the input array.
      * @return the string version of maxSum and minSum separated by commas.
      */
-    public static String miniMaxSum(int[] arr) {
+    public static String miniMaxSum(final int[] arr) {
         //  Your code goes here...
-        
-        return "";
+        int maxim = 0;
+        int minim = 0;
+        int minni = min(arr);
+        int maxxi = max(arr);
+        int summs = sum(arr);
+        maxim = summs - minni;
+        minim = summs - maxxi;
+        return maxim + "," + minim;
     }
 }
+
