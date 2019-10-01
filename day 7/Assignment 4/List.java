@@ -77,7 +77,8 @@ public class List {
         // How many items do we have in the list when you create it?
         // An empty list has how many items?
         // That is the initial value to use for size.
-        
+        size = 0;
+        list = new int[10];
     }
 
     /*
@@ -112,7 +113,13 @@ public class List {
      */
     public void add(int item) {
         //Inserts the specified element at the end of the list.
-        
+        if (size < list.length) {
+            list[size++] = item;
+        }
+        else {
+            resize();
+            list[size++] = item;
+        }
     }
 
     /*
@@ -147,6 +154,10 @@ public class List {
      */
 
     // todo create resize method
+    private void resize() {
+        list = Arrays.copyOf(list, list.length * 2);
+    }
+
 
 
     /*
@@ -157,7 +168,7 @@ public class List {
      * The method returns an int. Empty list should return 0.
      */
     public int size() {
-        
+        return size;  
     }
 
     /*
@@ -184,8 +195,15 @@ public class List {
     public void remove(int index) {
         // write the logic for remove here.
         // Think about what to do to the size variable.
-        
+        if (index < size){
+        for (int i = index; i < size; i++) {
+                list[i] = list[i + 1];
+            }
+        list[size--] = 0;
+        }
     }
+        
+    
 
     /*
      * Get method has to return the items that is
@@ -199,6 +217,11 @@ public class List {
      * number of items in the list? Would size variable be useful?
      */
     public int get(int index) {
+        if (index < size) {
+            return list[index];
+        } else { 
+            return -1;
+        }
 
     }
 
@@ -241,6 +264,11 @@ public class List {
      * the item exists and otherwise false
      */
     public boolean contains(int item) {
+        for (int i = 0; i < size; i++) {
+            if (item == list[i]) {
+                return true;
+            }
+        } return false;
         
     }
 
@@ -250,6 +278,11 @@ public class List {
      * or -1 if this list does not contain the element.
      */
     public int indexOf(int item) {
+        for (int i = 0; i < size; i++) {
+            if (list[i] == item) {
+                return i;
+            }
+        } return -1;
         
     }
 
