@@ -23,7 +23,7 @@
      * and b is an integer.
      * @param  a, the base
      * @param  b, the exponential
-     * @return a^b which is a long value.
+     * @return a^b which is a long value
      */
      public static double pow(float a, int b) {
         double pwr;
