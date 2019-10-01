@@ -52,6 +52,7 @@ public final class CardCatalog{
             for(int i = 0; i < cardCount; i++) {
                 if(title.equals(cards[i].getTitle())) {
                     for (int k = i; k < cardCount - 1; k++) {
+                        
                         cards[k] = cards[k + 1];
                     }
                     cards[cardCount - 1] = null;

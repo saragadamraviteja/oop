@@ -42,7 +42,7 @@ public class TestJUnit {
       lst.add(12);
       lst.add(97);
       assertEquals("1. ", "[8,12,97]", lst.toString());
-      lst.add(11);
+      lst.add(11); 
       assertEquals("2. ", 4, lst.size());
       lst.remove(12);
       assertEquals("3. ", "[8,12,97,11]", lst.toString());
