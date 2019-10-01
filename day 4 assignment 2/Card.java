@@ -1,4 +1,4 @@
-public class Card {
+public class Card  {
     private String title;
     private String author;
     private String subject;

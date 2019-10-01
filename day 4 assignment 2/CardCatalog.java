@@ -1,6 +1,6 @@
 public final class CardCatalog{
        int number;
-       Card[] cards = new Card [10];
+       Card[] cards  = new Card [10];
        int cardCount = 0;
        
        public void addACard(final Card card) {
