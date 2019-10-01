@@ -76,7 +76,7 @@ public class Clock {
         }
     }
 
-    // Adds Δ min to the time on this clock.
+    // Adds Δ min to the time on this clock
     public void toc(int delta) {
         if (delta > 0){
         int temp = delta/60;
