@@ -4,7 +4,7 @@ public class User {
     private String name;
     public int count;
     public User[] connections;      
-}
+
 
 public User(final String name1) {
     this.name = name1;
@@ -21,5 +21,6 @@ public String getName() {
 }
 
 public String toString() {
-    
+    getstring(users);
+}
 }

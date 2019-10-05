@@ -8,7 +8,7 @@
 
 import java.util.Arrays;
 
-public class SocialNetwork {
+public class SocialNetwork extends User {
 
     /**
      * users indicates the actual users in the network
@@ -152,7 +152,7 @@ public class SocialNetwork {
         // Your code goes here
         for (int i = 0; i < size; i++){
             if(users[i].getName().equals(userA)) {
-                  for(int j = 0;j < users[i].connections.length;i++) {
+                  for(int j = 0;j < users[i].connections.length;j++) {
                        System.out.println(users[i].connections[j]);
                     }
                 }
@@ -206,3 +206,4 @@ public class SocialNetwork {
         return sb.toString();
     }
 }
+
