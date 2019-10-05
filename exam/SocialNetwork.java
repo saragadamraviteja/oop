@@ -26,9 +26,8 @@ public class SocialNetwork {
     public SocialNetwork() {
         // TODO
         // Your code goes here
-        int final x = 50;
         size = 0;
-        users = new User[x];
+        users = new User[50];
     }
 
     /**
@@ -175,8 +174,17 @@ public class SocialNetwork {
     public User[] getCommonConnections(User userA, User userB) {
         // TODO
         // Your code goes here
-        for(int i = 0;i < )
-        return null;
+        String[] us = getConnections(userA);
+        String[] us1 = getConnections(userB);
+        String[] common;
+        for (int i = 0; i < us.length;i++) {
+            for (int j = 0; j < us1.length;j++){
+            if(us[i].equals(us[j])) {
+                common[i] = us[i];
+            }
+        }
+    }
+        return common;
     }
 
     /**
