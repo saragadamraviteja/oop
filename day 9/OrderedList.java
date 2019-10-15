@@ -1,15 +1,15 @@
 class OrderedList extends AbstractList {
     public void add(int item) {
         list[size++] = item;
-        // int[] arr = new int[];
         int temp;
-        for (int i = 0; i < size - 1; i++) {
-            temp = list[i];
-            if (temp > list[i]) {
-                list[i] = list[i+1];
-                list[i+1] = temp;
-            }    
+        for (int i = 0; i < size; i++) {
+            for (int j = i; j >0; j--) {
+            if (list[j] < list[j-1]) {
+                temp = list[j];
+                list[j] = list[j - 1];
+                list[j - 1] = temp;
+            }  
+        }  
         } 
-        // size += 1; 
     }
 }

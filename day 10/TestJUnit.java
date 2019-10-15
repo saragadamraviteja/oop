@@ -271,7 +271,6 @@ public class TestJUnit {
       System.out.println("TestCase for SubList method in Lists.");
       List lst = new List();
       List lstout;
-
       lst.add(5);
       int[] arr = {1,2,3,4,5,6};
       lst.addAll(arr);
@@ -283,7 +282,6 @@ public class TestJUnit {
       lst1.addAll(arr);
       lstout = lst1.subList(2,6);
       assertEquals("2. List Object through abstract class", "[2,3,4,5]", lstout.toString());
-      
       ListInterface lst2 = new List();
       lst2.add(7);
       lst2.addAll(arr);

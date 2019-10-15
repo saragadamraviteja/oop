@@ -27,7 +27,7 @@ public class SocialNetwork extends User {
         // TODO
         // Your code goes here
         size = 0;
-        users = new User[50];
+        users = new User[100];
     }
 
     /**
@@ -39,30 +39,24 @@ public class SocialNetwork extends User {
     public void createDataStructure(String str) {
         // TODO
         // Your code goes here
-        String[] tokens = str.split(";");
-        String[] tokens1;
-        String[] all;
- 
-        for (int i = 0;i < tokens.length;i++) {
-            tokens1[i] = tokens[i].split("is connected to");   
+        if (str.equals("")) {
+            return;
+        } 
+        str = str.replace(" is connected to ", ",");
+        String[] s1 = str.split(";");
+        for (int i = 0; i < s1.length; i++) {
+            String[] s = s1[i].split(",");
+            for (int j = 0; j < s.length; j++) {
+                addUser(new User(s[j]));
+            }
         }
-        for (int i = 0;i < tokens1.length;i++) {
-            for(int j = 0;j < tokens1[i].length;j++) {
-                all[i] =  tokens1[i][[0]].split(",") + tokens1[i][[1]].split(",");
-           
-         }
+        for (int i = 0; i < s1.length; i++) {
+            String[] s = s1[i].split(",");
+            for (int j = 1; j < s.length; j++) {
+                addConnection(getUser(s[0]), getUser(s[j]));
+            }
         }
-        for (int i = 0;i < all.length;i++) {
-            for (int j = 0;j < all.length; j++) {
-            if (all[i].equals(all[j])) {
 
-            }
-            else {
-                users[i] = all[i];
-            }
-        }
-    }
-        // return;
     }
 
     private boolean searchUser(User user) {
@@ -73,6 +67,8 @@ public class SocialNetwork extends User {
         }
         return false;
     }
+
+
 
     /**
      * Please don't modify the follwoing code.
@@ -100,14 +96,13 @@ public class SocialNetwork extends User {
     public void addUser(User userA) {
         // TODO
         // Your code goes here
-        for (int i = 0;i < users.length;i++) {
-            if(users[i].equals(userA)){
-            } else {
-                users[size ++] = UserA;
+        for (int i = 0; i < size; i++) {
+            if(users[i].name.equals(userA.name)){
+                return;
             }
         }
-        return;
-    }
+                users[size ++] = userA;
+            }
 
     /**
      * This method takes two users (objects) as arguments and 
@@ -124,17 +119,27 @@ public class SocialNetwork extends User {
     public void addConnection(User userA, User userB) {
         // TODO
         // Your code goes here
-            for (int i = 0; i < size; i++) {
-                if(users[i].getName().equals(userA)){
-                    for (int j = 0; j < size; j++) {
-                          if(users[j].getName().equals(userB)) {
-                              users[i].connections[size++] = users[j];
-                          }
-                    }
-                }
+        if (userB == null || userA == null || userA.connections == null) {
+            return;
+        }
+        int count = 0;
+        for (int i = 0; i < size; i++){
+            if (users[i].name.equals(userA.name)) {
+                count++;
+                break;
             }
         }
-
+        for (int i = 0; i < size; i++){
+            if (users[i].name.equals(userB.name)) {
+                count++;
+                break;
+            }
+        }
+        if (count != 2) {
+            return;
+        } else {
+        userA.connections[userA.count++] = userB;
+        }
     }
 
     /**
@@ -150,16 +155,20 @@ public class SocialNetwork extends User {
     public User[] getConnections(User userA) {
         // TODO
         // Your code goes here
-        for (int i = 0; i < size; i++){
-            if(users[i].getName().equals(userA)) {
-                  for(int j = 0;j < users[i].connections.length;j++) {
-                       System.out.println(users[i].connections[j]);
-                    }
-                }
+        int found = 0;
+        for (int i = 0; i < size; i++) {
+            if (users[i].name.equals(userA.name)) {
+                found = 1;
+                break;
             }
+        }
+        if (found == 0) {
+            return null;
+        } else {
+        if (userA.count > 0) return userA.connections;
         return null;
+        }
     }
-
     /**
      * This method returns the common connections of userA and userB.
      * Note: both userA and userB should be on the network. if anyone 
@@ -174,19 +183,40 @@ public class SocialNetwork extends User {
     public User[] getCommonConnections(User userA, User userB) {
         // TODO
         // Your code goes here
-        String[] us = getConnections(userA);
-        String[] us1 = getConnections(userB);
-        String[] common;
-        for (int i = 0; i < us.length;i++) {
-            for (int j = 0; j < us1.length;j++){
-            if(us[i].equals(us[j])) {
-                common[i] = us[i];
+        if (userB == null || userA == null || userA.connections == null || userB.connections == null) {
+            return null;
+        }
+        int count = 0;
+        for (int i = 0; i < size; i++){
+            if (users[i].name.equals(userA.name)) {
+                count++;
+                break;
             }
         }
+        for (int i = 0; i < size; i++){
+            if (users[i].name.equals(userB.name)) {
+                count++;
+                break;
+            }
+        }
+        if (count != 2) {
+            return null;
+        } else {
+            User[] now = new User[10];
+            int nowSize = 0;
+            for (int i = 0; i < userA.count; i++) {
+                for (int j = 0; j < userB.count; j++) {
+                    if (userA.connections[i].name.equals(userB.connections[j].name)) {
+                        now[nowSize++] = userA.connections[i];
+                        break;
+                    }
+                }
+            }
+            now = Arrays.copyOf(now,nowSize);
+            if (now.length > 0) return now;
+            return null;
+        }
     }
-        return common;
-    }
-
     /**
      * This reutrns the String version of the social network.
      * 
@@ -205,5 +235,17 @@ public class SocialNetwork extends User {
         sb.append(users[i]);
         return sb.toString();
     }
+    public static void main(String[] args) {
+        String test = "A is connected to B,C,D";
+        SocialNetwork sn = new SocialNetwork();
+        sn.createDataStructure(test);
+        sn.addUser(new User("V",null));
+        sn.addConnection(null, sn.getUser("V"));
+        for (int i = 0; i < sn.size; i++) {
+            System.out.println(sn.users[i].toString());
+        }
+        
+    }
 }
+
 

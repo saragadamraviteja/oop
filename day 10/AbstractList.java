@@ -149,9 +149,10 @@ public abstract class AbstractList implements ListInterface  {
      * 
      * Think of on which object this method can be called. List / OrderedList and etc.
      */
-    public final void add(int index, int item) {
+    public void add(int index, int item) {
         // TODO
         // Your code goes here.
+     
         
     }
 
@@ -165,6 +166,7 @@ public abstract class AbstractList implements ListInterface  {
     public void addAll(List lst) {
         // TODO
         // Your code goes here.
+        
         
     }
 
@@ -190,8 +192,7 @@ public abstract class AbstractList implements ListInterface  {
         // replace the code below to implement the size method
         // TODO
         // Your code goes here.
-        
-        return -1;
+        return size;
     }
 
     /**
@@ -200,6 +201,7 @@ public abstract class AbstractList implements ListInterface  {
     public void resize() {
         // TODO
         // Your code goes here.
+        list = Arrays.copyOf(list, 2*size);
         
     }
 
@@ -228,8 +230,14 @@ public abstract class AbstractList implements ListInterface  {
         // Think about what to do to the size variable.
         // TODO
         // Your code goes here.
+        if(size > index) {
+            for (int i = index; i < size; i++) {
+                list[i] = list[i+1];
+                }
+                list[size--] = 0;
+            }
         
-    }
+    }   
 
     /*
      * Get method has to return the items that is
@@ -246,8 +254,11 @@ public abstract class AbstractList implements ListInterface  {
         // Replace the code below to write the code for get
         // TODO
         // Your code goes here.
-        
-        return -1;
+        if(index >= 0 && index < size){
+            return list[index];
+            }
+            return -1;
+
     }
 
     /*
@@ -290,9 +301,13 @@ public abstract class AbstractList implements ListInterface  {
     public boolean contains(int item) {
         // TODO
         // Your code goes here.
-        
+        for(int i = 0; i < size; i++) {
+            if(list[i] == item) {
+                return true;
+            }
+        }
         return false;
-    }
+}
 
     /*
      * Returns the index of the first occurrence of the specified element in this list,
@@ -301,8 +316,11 @@ public abstract class AbstractList implements ListInterface  {
     public int indexOf(int item) {
         // TODO
         // Your code goes here.
-
-        return -1;
+        for(int i = 0; i < size; i++){
+            if(item == list[i]) {
+                return i; 
+            } 
+            } return -1;
     }
 
     /**
@@ -316,8 +334,14 @@ public abstract class AbstractList implements ListInterface  {
     public int lastIndexOf(int item) {
         // TODO
         // Your code goes here.
+        int x = -1;
+        for(int i = 0; i < list.length; i++) {
+            if(list[i] == item) {
+                x = i;
+            }
+        }
         
-        return -1;
+        return x;
     }
 
     /**
@@ -328,8 +352,14 @@ public abstract class AbstractList implements ListInterface  {
     public int count(int item) {
         // TODO
         // Your code goes here.
+        int count = 0;
+        for(int i = 0; i < list.length; i++) {
+            if(list[i] == item) {
+                count++;
+            }
+        }
         
-        return 0;
+        return count;
     } 
 
     /**
@@ -345,8 +375,15 @@ public abstract class AbstractList implements ListInterface  {
     public List subList(int fromIndex, int toIndex) {
         // TODO
         // Your code goes here.
-        
-        return null;
+        if(fromIndex < 0 || toIndex < 0 || toIndex <= fromIndex || fromIndex > list.length || toIndex > list.length) {
+            return null;
+        } else {
+            List l = new List(toIndex - fromIndex);
+        for(int i = fromIndex; i < toIndex; i++) {
+            l.add(list[i]);
+        }
+        return l;
+        }
     }
 
     /**
@@ -359,5 +396,7 @@ public abstract class AbstractList implements ListInterface  {
     public void set(int index, int item) {
         // TODO
         // Your code goes here.
+        list[index] = item;
+        
     }
 }

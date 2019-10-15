@@ -15,10 +15,19 @@ public class OrderedList extends AbstractList {
      * The method returns void (nothing)
      */
     public void add(int item) {
-        //Inserts the specified element at the end of the list.
-        // TODO
-        // Your code goes here....
+        list[size++] = item;
+        int temp;
+        for (int i = 0; i < size; i++) {
+            for (int j = i; j > 0; j--) {
+            if (list[j] < list[j-1]) {
+                temp = list[j];
+                list[j] = list[j - 1];
+                list[j - 1] = temp;
+            }  
+        }  
+        } 
     }
+    
 
     public int rank(int item) {
         int lo = 0, hi = size-1; 
@@ -37,3 +46,4 @@ public class OrderedList extends AbstractList {
     }
     
 }
+ 

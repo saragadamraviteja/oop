@@ -4,6 +4,6 @@ class List extends AbstractList {
         if (size == list.length) {
             list = resize(list);
         }
-        list[size++] = item;
+        list[size++] = item; 
     }
 } 
