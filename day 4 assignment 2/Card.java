@@ -3,7 +3,7 @@ public class Card  {
     private String author;
     private String subject;
 
-    public Card(String title; String author; String subject) {
+    public Card(String title, String author, String subject) {
         this.title = title;
         this.author = author;
         this.subject = subject;
@@ -34,4 +34,3 @@ public class Card  {
     }
 
     }
-}
