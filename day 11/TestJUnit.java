@@ -22,7 +22,7 @@ public class TestJUnit {
    public void testCase1() {
       CSVReader obj = new CSVReader();
       obj.readCSV("mtcars.csv");
-
+      // System.out.println(Arrays.toString(obj.readCSV("mtcars.csv")));
       assertEquals("1. ", 32, obj.rowCount());
       assertEquals("2. ", 12, obj.fieldCount());
       assertEquals("3. ", "cyl", obj.getFieldName(3));

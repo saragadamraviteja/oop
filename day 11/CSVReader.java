@@ -20,6 +20,8 @@ public class CSVReader {
      */
     public void readCSV(String fileName) {
         dataFrame = ReadCSVFile.readFile(fileName);
+       // System.out.println(dataFrame[0]);
+
     }
 
     /**
@@ -31,7 +33,9 @@ public class CSVReader {
     public int rowCount() {
         // TODO
         // Your code goes here....
-        return -1;
+        if(dataFrame.length == 0) {
+            return -1;
+        } return dataFrame.length - 1; 
     }
 
     /**
@@ -41,8 +45,10 @@ public class CSVReader {
     public int fieldCount() {
         // TODO
         // Your code goes here....
-
-        return -1;
+        if(dataFrame.length == 0) {
+            return -1;
+        }
+        return dataFrame[0].split(",").length;
     }
 
     /**
@@ -55,8 +61,8 @@ public class CSVReader {
     public String getFieldName(int index) {
         // TODO
         // Your code goes here....
-
-        return null;
+        if(index < 0 || index > fieldCount()) return null;
+        return dataFrame[0].split(",")[index - 1];
     }
 
 
@@ -72,8 +78,9 @@ public class CSVReader {
     public String[] getRow(int rowNumber) {
         // TODO
         // Your code goes here....
+        if (rowNumber >= dataFrame.length || rowNumber < 1) return null;
+        return dataFrame[rowNumber].split(",");
 
-        return null;
     }
 
     /**
@@ -88,8 +95,15 @@ public class CSVReader {
     public String[] getRows(int fromIndex, int toIndex) {
         // TODO
         // Your code goes here....
-
-        return rows;
+        if(fromIndex > toIndex || fromIndex < 0 || toIndex <0 || fromIndex > dataFrame.length || toIndex > dataFrame.length) {
+            return null;
+        }
+        String[] arr = new String[toIndex - fromIndex];
+        int j = 0;
+        for(int i = fromIndex; i < toIndex; i++) {
+            arr[j++] = dataFrame[i];
+        }
+        return arr;
     }
 
     /**
@@ -101,7 +115,13 @@ public class CSVReader {
     public String[] getColumnValues(int index) {
         // TODO
         // Your code goes here....
-
+        if(rowCount() < 0) {
         return null;
+        }
+        String[] arrs = new String[rowCount()];
+        for(int i = 1; i <= rowCount(); i++) {
+            arrs[i -1] = dataFrame[i].split(",")[index];
+        }
+    return arrs;
     }
 }
