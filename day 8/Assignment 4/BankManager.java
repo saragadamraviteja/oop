@@ -2,9 +2,9 @@ class BankAccount {
     final int accountNumber;
     double balance;
 
-    public BankAccount(int accountNumber, double balance) {
-        this.accountNumber = accountNumber;
-        this.balance = balance;
+    public BankAccount(int acntNumber, double balnc) {
+        this.accountNumber = acntNumber;
+        this.balance = balnc;
     }
 }
 
