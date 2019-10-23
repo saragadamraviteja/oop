@@ -20,7 +20,6 @@ public class CSVReader {
      */
     public void readCSV(String fileName) {
         dataFrame = ReadCSVFile.readFile(fileName);
-       // System.out.println(dataFrame[0]);
 
     }
 
