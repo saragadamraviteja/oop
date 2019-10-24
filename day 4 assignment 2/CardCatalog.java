@@ -4,7 +4,7 @@ public final class CardCatalog{
     Card[] sortedAuthor;
     Card[] sortedSubject;
     public CardCatalog() {
-        //instantiate 3 arrays to sort based on title,
+        //3 arrays to sort based on title,
         //author and subject respectively
         cardcount = 0;
         catalog = new Card[10];
@@ -12,9 +12,7 @@ public final class CardCatalog{
         sortedAuthor = new Card[10];
         sortedSubject = new Card[10];
     }
-    //catalog array of Card objects
-    // catalog = new Card[10];
-
+    //catalog array of Card object
     // card number- no of cards in the catalog
     int cardcount;
     
@@ -24,7 +22,6 @@ public final class CardCatalog{
             for (int j = 0; j < cardcount; j++) {
                 int x = catalog[j].getTitle().compareTo(catalog[j+1].getTitle());
                 if (x > 0) {
-                    // swap temp and arr[i]
                     Card temp = catalog[j];
                     catalog[j] = catalog[j+1];
                     catalog[j+1] = temp;
@@ -39,7 +36,6 @@ public final class CardCatalog{
             for (int j = 0; j < cardcount; j++) {
                 int x = catalog[j].getAuthor().compareTo(catalog[j+1].getAuthor());
                 if (x > 0) {
-                    // swap temp and arr[i]
                     Card temp = catalog[j];
                     catalog[j] = catalog[j+1];
                     catalog[j+1] = temp;
@@ -54,7 +50,6 @@ public final class CardCatalog{
             for (int j = 0; j < cardcount; j++) {
                 int x = catalog[j].getSubject().compareTo(catalog[j+1].getSubject());
                 if (x > 0) {
-                    // swap temp and arr[i]
                     Card temp = catalog[j];
                     catalog[j] = catalog[j+1];
                     catalog[j+1] = temp;
