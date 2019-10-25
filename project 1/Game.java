@@ -23,9 +23,13 @@ public class Game {
      */
     String dis;
     /**
-     * s1 is to store the input from the user.
+     * s1 is to store the input from the user in character.
      */
     Character s1;
+    /**
+     * s2 is to store the input from the user.
+     */
+    String s2;
     /**
      * alphabets used for showing the available letters. 
      */
@@ -59,11 +63,20 @@ public class Game {
      */
     int score = 0;
     /**
-     * flag is used  
+     * flag is used to checking secretword and guessed word correct ot not. 
      */
     int flag = 0;
+    /**
+     * size used for calculating the size of the array.
+     */
     int size = 0;
+    /**
+     * s is used to store the input from the user.
+     */
     String s;
+    /**
+     * this method is used for giving the hints to the user if he wants hint.
+     */
     public void hint() {
         if (hintcount > 0) {
             if (secretword.equals(new String(display))) {
@@ -88,6 +101,9 @@ public class Game {
         } else if (h.equals("no")) {
         }
     }
+    /**
+     * this method shows the available letters to the user for guessing.
+     */
     public void letters() {
         alphabet = "abcdefghijklmnopqrstuvwxyz";
         System.out.println("letters available:"  +  alphabet);
@@ -95,7 +111,7 @@ public class Game {
         System.out.println(" ");
         System.out.println("chances left: " + (secretword.length() - 2));
         display = new char[secretword.length()];
-        System.out.println(secretword);
+        // System.out.println(secretword);
         for (int i = 0; i < secretword.length(); i++) {
             display[i] = '_';
          }
@@ -106,6 +122,10 @@ public class Game {
         display[x2] = secret[x2];
          print();
     }
+    /**
+     * this method is used for showing the secretword which is shown 
+     * with some random alphabets and display to the user.
+     */
     public void print() {
         if (count == 0) {
         dis = " ";
@@ -140,18 +160,37 @@ public class Game {
          hint();
     }
     }
+    /**
+     * this method is used for guessed alphabet is valid or not.
+     */
+    
     public boolean wordguess() {
        System.out.println("Guess character");
-        s1 = sd.nextLine().charAt(0);
-        s1 = Character.toLowerCase(s1);
+        s2 = sd.nextLine();
+        if (s2.length() > 1) {
+            System.out.println("please enter single character");
+            wordguess();
+        } else {
+            s1 = s2.charAt(0);
+            s1 = Character.toLowerCase(s1);
+        }
+        
         lett += s1;
        for (int i = 0; i < secretword.length(); i++) {
-        if (s1.equals(secretword.charAt(i))) {
+        if (s1 ==(secretword.charAt(i))) {
             return true;
         }
        }
         return false;
     }
+    /**
+    * we are taking the inputs from user like
+    * no of number of players, alphabets guessing, whether to
+    * choose hint or not . to choose level of difficulty either
+    * easy or hard or medium or random.
+    * display the player whether won the game or not.
+    * displaying the number of letters guessed and available letters.
+    */
     public void playGame() {
         int playerss = 0; // take input from the user
         System.out.println("Enter the number of players");
@@ -247,7 +286,7 @@ public class Game {
   for (int g = 0; g < ee.size; g++) {
       finl[g] = ee.players[g];
   }
-  System.out.println(finl[0].name);
+  // System.out.println(finl[0].name);
   Arrays.sort(finl);
   ee.show(finl);
         sd.close();
